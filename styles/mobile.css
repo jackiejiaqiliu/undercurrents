@@ -2,7 +2,7 @@
 
 /* Smaller base font size for mobile */
 html {
-    font-size: 11px;
+    font-size: 12px;
 }
 
 /* Fix overflow hidden from main.css that prevents scrolling */
@@ -16,7 +16,7 @@ header {
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
 }
 
 /* Hide regular nav on mobile */
@@ -129,7 +129,7 @@ header nav {
     display: flex !important;
     flex-direction: column;
     align-items: flex-start;
-    gap: 25px;
+    gap: 15px;
     width: 100%;
     padding: 70px 20px 30px 20px;
     position: relative;
@@ -138,7 +138,7 @@ header nav {
 
 .mobile-nav-overlay nav a {
     font-family: "Funnel Display", sans-serif;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-weight: 300;
     color: #2b2b2b;
     text-decoration: none;
@@ -149,7 +149,7 @@ header nav {
 /* Language switch - keep on one line */
 .mobile-nav-overlay nav .language-switch {
     font-family: "Funnel Display", sans-serif;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-weight: 300;
     margin-top: 0;
     text-align: left;
@@ -159,7 +159,7 @@ header nav {
 
 .mobile-nav-overlay nav .language-switch a {
     display: inline !important; /* Inline for horizontal layout */
-    font-size: 1.8rem;
+    font-size: 1.5rem;
 }
 
 .mobile-nav-overlay nav .language-switch a:hover {
@@ -176,8 +176,8 @@ header nav {
 
 /* ========== Index Page - Mobile ========== */
 
-.title h1 { font-size: 3rem; }
-.title h2 { font-size: 1rem; }
+.title h1 { font-size: 3.4rem; }
+.title h2 { font-size: 1.1rem; }
 
 .language-buttons {
     bottom: 30px;
@@ -186,7 +186,7 @@ header nav {
 
 .language-buttons a,
 .language-buttons .separator {
-    font-size: 1.1rem;
+    font-size: 1.4rem;
 }
 
 /* ========== Single Column Layouts ========== */
@@ -234,12 +234,17 @@ header nav {
 
 .people-detail-col .col {
     border-right: none;
-    border-bottom: 1px solid #2b2b2b;
     min-height: auto;
+    padding: 15px 15px 0px 15px;
 }
 
 .people-detail-col .col:last-child {
     border-bottom: none;
+    margin-bottom: 50px;
+}
+
+.people-contact {
+    margin-top: 20px;
 }
 
 /* ========== Card Grid - Single Column ========== */
@@ -249,6 +254,15 @@ header nav {
     grid-template-columns: 1fr;
 }
 
+.card-body{
+    padding:15px;
+}
+
+.card-title{
+    font-size: 1.3rem;
+    margin-bottom: 6px;
+}
+
 /* ========== Typography Adjustments ========== */
 h1 {
     font-size: 1.8rem;
@@ -256,12 +270,12 @@ h1 {
 }
 
 .people-detail-col h2 {
-    font-size: 1rem;
+    font-size: 1.2rem;
     margin: 5px 0 20px 0;
 }
 
 .col {
-    padding: 15px;
+    padding: 20px 15px 50px 15px;
 }
 
 .col p {

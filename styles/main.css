@@ -80,39 +80,31 @@ a:hover { text-decoration: none; }
 .cursor-label.show { opacity: 1; }
 
 /* ========== Title (index) ========== */
-/* 固定全屏 + Grid 居中，只在 main.css 定义 */
+/* Fixed, centered title container */
 .title {
   position: fixed !important;
-  inset: 0 !important;            /* 等价于 top/right/bottom/left = 0 */
+  inset: 0 !important;
   display: grid !important;
-  place-items: center !important; /* 水平垂直居中 */
+  place-items: center !important;
   text-align: center;
   color: #f0f0f0;
-  z-index: 1;
+  z-index: 1; /* base layer */
 }
 
-.title .stack {
-  position: relative;
-  z-index: 2;
+/* Snapshot overlay above the live stack */
+.title .stack { position: relative; z-index: 1; }
+
+/* optional: tiny ease on live text (not required) */
+.title .stack h1, .title .stack h2 {
+  transition: opacity 300ms cubic-bezier(0.4,0,0.2,1);
 }
 
-/* 交叉淡入的快照层 */
-.title .ghost {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 520ms ease; /* 和 JS 对齐 */
-  z-index: 1;
+/* accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .title .ghost { transition: none; }
 }
 
-.title .ghost.show { opacity: 1; }
 
-/* 标题与日期的透明度过渡（非定位） */
-.title .stack h1,
-.title .stack h2 { transition: opacity 300ms ease; }
 
 .title h1 {
   display: block;
@@ -242,7 +234,7 @@ header nav a {
 
 .col {
   overflow: auto; /* independent scrolling */
-  padding: 20px 20px;
+  padding: 20px;
 }
 
 .col.left,

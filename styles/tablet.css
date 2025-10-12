@@ -51,16 +51,9 @@ body:not(.pages) .invisible-link {
     display: none;
 }
 
-.title .ghost {
-  opacity: 0;
-  transition: opacity 600ms ease !important;
-}
-
-.title .ghost.show { opacity: 1 !important; }
-
 /* Tablet 字号（可按需） */
-.title h1 { font-size: 4rem; }
-.title h2 { font-size: 1.05rem; }
+.title h1 { font-size: 5rem; }
+.title h2 { font-size: 1.2rem; }
 
 /* Add language buttons container - plain text style */
 .language-buttons {
@@ -76,7 +69,7 @@ body:not(.pages) .invisible-link {
 
 .language-buttons a {
     font-family: "Funnel Display", sans-serif;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-weight: 300;
     color: #f0f0f0;
     text-decoration: none;
