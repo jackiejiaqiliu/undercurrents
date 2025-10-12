@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <title>Undercurrents</title>
         <link rel="stylesheet" media="only screen and (max-width: 865px)" href="styles/mobile.css">	
 		<link rel="stylesheet" media="only screen and (min-width: 866px) and (max-width: 1199px)" href="styles/tablet.css">
@@ -11,15 +12,14 @@
         <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     </head>
     <body>
-        <video autoplay muted loop id="background-video" poster="images/poster.png">
+        <video autoplay muted loop playsinline id="background-video" poster="images/poster.png">
             <source src="images/background-video.mp4" type="video/mp4">
             <source src="images/background-video.webm" type="video/webm">
-            <source src="images/background-video.ogv" type="video/ogv">
             Your browser does not support HTML5 video.
         </video>
         <div class="title">
             <div class="stack">
-                <h1 href="">Undercurrents</h1>
+                <h1>Undercurrents</h1>
                 <h2>January 9 – 19, 2026 • Venice, IT</h2>
             </div>
         </div>
@@ -33,6 +33,7 @@
         
         <!-- Invisible link (for desktop hover) -->
         <a href="about.html" class="invisible-link"></a>
+        
+        <script src="scripts.js"></script>
     </body>
-    <script src="scripts.js"></script>
 </html>

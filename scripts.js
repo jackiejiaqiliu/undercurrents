@@ -2,11 +2,35 @@
  * DEVICE DETECTION
  *****************/
 function isDesktop() {
-  return window.innerWidth >= 1200;
+  // Use matchMedia for more reliable detection
+  return window.matchMedia('(min-width: 1200px)').matches;
 }
 
 function isMobile() {
-  return window.innerWidth <= 865;
+  // Use matchMedia for more reliable detection
+  return window.matchMedia('(max-width: 865px)').matches;
+}
+
+function isTouchDevice() {
+  return ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+}
+
+/*****************
+ * FORCE VIDEO PLAYBACK ON MOBILE
+ *****************/
+const video = document.getElementById('background-video');
+if (video) {
+  // Attempt to play video
+  video.play().catch(err => {
+    console.log('Video autoplay failed:', err);
+  });
+  
+  // Try to play on user interaction for iOS
+  if (isTouchDevice()) {
+    document.addEventListener('touchstart', function() {
+      video.play().catch(err => console.log('Video play on touch failed:', err));
+    }, { once: true });
+  }
 }
 
 /*****************
@@ -260,20 +284,22 @@ function crossfadeSwap(setter) {
   if (!title || !stack) { setter(); return; }
 
   const ghost = document.createElement("div");
-  ghost.className = "ghost show";
+  ghost.className = "ghost";
   const snap = stack.cloneNode(true);
   ghost.appendChild(snap);
   title.appendChild(ghost);
 
-  setter(); // apply new content underneath
-
-  // Force a reflow to ensure the "show" class is applied before removing it
+  // Force reflow
   ghost.offsetHeight;
   
   requestAnimationFrame(() => {
+    ghost.classList.add("show");
     requestAnimationFrame(() => {
-      ghost.classList.remove("show");
-      ghost.addEventListener("transitionend", () => ghost.remove(), { once: true });
+      setter(); // apply new content underneath
+      requestAnimationFrame(() => {
+        ghost.classList.remove("show");
+        setTimeout(() => ghost.remove(), 600); // Match CSS transition time
+      });
     });
   });
 }
