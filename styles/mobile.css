@@ -176,33 +176,8 @@ header nav {
 
 /* ========== Index Page - Mobile ========== */
 
-/* Fix title positioning and ghost layer */
-.title {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100vh !important;
-    display: grid !important;
-    place-items: center !important;
-}
-
-.title .stack {
-    position: relative;
-    z-index: 2;
-}
-
-.title .ghost {
-    z-index: 1;
-}
-
-.title h1 {
-    font-size: 3rem;
-}
-
-.title h2 {
-    font-size: 1rem;
-}
+.title h1 { font-size: 3rem; }
+.title h2 { font-size: 1rem; }
 
 .language-buttons {
     bottom: 30px;

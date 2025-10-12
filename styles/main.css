@@ -58,49 +58,6 @@ a:hover { text-decoration: none; }
   z-index: -1;
 }
 
-/* ========== Title (index) ========== */
-/* Ensure title is centered */
-.title {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  display: grid !important;
-  place-items: center !important;
-  text-align: center;
-  color: #f0f0f0;
-  z-index: 1;
-}
-
-/* Stack wrapper for proper layering */
-.title .stack {
-  position: relative;
-  z-index: 2;
-}
-
-/* Ghost layer for crossfade */
-.title .ghost {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 520ms ease;
-  z-index: 1;
-}
-
-.title .ghost.show {
-  opacity: 1;
-}
-
-/* Add smooth transition to title content */
-.title .stack h1,
-.title .stack h2 {
-  transition: opacity 300ms ease;
-}
-
 /* label cursor shown on the index only */
 .cursor-label {
   position: fixed;
@@ -122,6 +79,41 @@ a:hover { text-decoration: none; }
 
 .cursor-label.show { opacity: 1; }
 
+/* ========== Title (index) ========== */
+/* 固定全屏 + Grid 居中，只在 main.css 定义 */
+.title {
+  position: fixed !important;
+  inset: 0 !important;            /* 等价于 top/right/bottom/left = 0 */
+  display: grid !important;
+  place-items: center !important; /* 水平垂直居中 */
+  text-align: center;
+  color: #f0f0f0;
+  z-index: 1;
+}
+
+.title .stack {
+  position: relative;
+  z-index: 2;
+}
+
+/* 交叉淡入的快照层 */
+.title .ghost {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 520ms ease; /* 和 JS 对齐 */
+  z-index: 1;
+}
+
+.title .ghost.show { opacity: 1; }
+
+/* 标题与日期的透明度过渡（非定位） */
+.title .stack h1,
+.title .stack h2 { transition: opacity 300ms ease; }
+
 .title h1 {
   display: block;
   font-weight: 400;
@@ -131,7 +123,7 @@ a:hover { text-decoration: none; }
   margin-bottom: 20px;
 }
 
-/* date line with adjustable tracking/word spacing (JS sets vars) */
+/* date 行：只留排版变量，定位不动 */
 .title h2 {
   font-size: 1.2rem;
   font-weight: 400;

@@ -51,20 +51,16 @@ body:not(.pages) .invisible-link {
     display: none;
 }
 
-/* Ensure crossfade ghost overlay works properly */
 .title .ghost {
-    position: absolute;
-    inset: 0;
-    display: grid;
-    place-items: center;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 600ms ease !important;
+  opacity: 0;
+  transition: opacity 600ms ease !important;
 }
 
-.title .ghost.show {
-    opacity: 1 !important;
-}
+.title .ghost.show { opacity: 1 !important; }
+
+/* Tablet 字号（可按需） */
+.title h1 { font-size: 4rem; }
+.title h2 { font-size: 1.05rem; }
 
 /* Add language buttons container - plain text style */
 .language-buttons {
