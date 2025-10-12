@@ -1,0 +1,281 @@
+/* Import tablet styles as base */
+@import url('tablet.css');
+
+/* ========== Mobile Overrides ========== */
+
+/* Smaller base font size for mobile */
+html {
+    font-size: 11px;
+}
+
+/* Fix overflow hidden from main.css that prevents scrolling */
+.pages {
+    overflow: auto !important;
+}
+
+/* ========== Header & Navigation ========== */
+header {
+    padding: 12px 15px;
+}
+
+.logo {
+    font-size: 1.5rem;
+}
+
+/* Hide regular nav on mobile */
+header nav {
+    display: none !important;
+}
+
+/* Hamburger button - VISIBLE on mobile */
+.hamburger {
+    display: flex !important; /* Override any other display settings */
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: default;
+    z-index: 1001;
+    position: relative;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background: #2b2b2b;
+    transition: all 0.3s ease;
+}
+
+/* Hamburger animation when open */
+.hamburger.open span:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+}
+
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Mobile nav overlay */
+.mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #f0f0f0;
+    z-index: 2000; /* Higher z-index to be above everything */
+    display: none; /* Hidden by default */
+    padding: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.mobile-nav-overlay.open {
+    display: block; /* Show when open */
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Close button - styled like hamburger */
+.mobile-nav-overlay .close-button {
+    position: fixed;
+    top: 12px;
+    right: 20px;
+    background: none;
+    border: none;
+    cursor: default;
+    z-index: 2001; /* Above nav content */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    width: 41px; /* Match hamburger width including padding */
+    height: 41px;
+}
+
+/* Create X shape with spans */
+.mobile-nav-overlay .close-button span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background: #2b2b2b;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transition: all 0.3s ease;
+}
+
+.mobile-nav-overlay .close-button span:nth-child(1) {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.mobile-nav-overlay .close-button span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-nav-overlay .close-button span:nth-child(3) {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* Overlay nav styling - each link on own line */
+.mobile-nav-overlay nav {
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 25px;
+    width: 100%;
+    padding: 70px 20px 30px 20px;
+    position: relative;
+    z-index: 1; /* Below close button */
+}
+
+.mobile-nav-overlay nav a {
+    font-family: "Funnel Display", sans-serif;
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: #2b2b2b;
+    text-decoration: none;
+    text-align: left;
+    display: block;
+}
+
+/* Language switch - keep on one line */
+.mobile-nav-overlay nav .language-switch {
+    font-family: "Funnel Display", sans-serif;
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin-top: 0;
+    text-align: left;
+    display: block !important; /* Override flex from nav */
+    white-space: nowrap; /* Keep all on one line */
+}
+
+.mobile-nav-overlay nav .language-switch a {
+    display: inline !important; /* Inline for horizontal layout */
+    font-size: 1.8rem;
+}
+
+.mobile-nav-overlay nav .language-switch a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 2px;
+}
+
+.mobile-nav-overlay nav .language-switch .selected-language {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 2px;
+}
+
+/* ========== Index Page - Mobile ========== */
+.title h1 {
+    font-size: 3rem;
+}
+
+.title h2 {
+    font-size: 1rem;
+}
+
+.language-buttons {
+    bottom: 30px;
+    gap: 12px;
+}
+
+.language-buttons a,
+.language-buttons .separator {
+    font-size: 1.1rem;
+}
+
+/* ========== Single Column Layouts ========== */
+
+/* About page - stack columns */
+.about-col {
+    display: block;
+    height: auto;
+    min-height: calc(100dvh - var(--header-h));
+}
+
+.about-col .col {
+    border-right: none;
+    border-bottom: 1px solid #2b2b2b;
+    min-height: auto;
+}
+
+.about-col .col:last-child {
+    border-bottom: none;
+}
+
+/* People page - stack columns */
+.people-col {
+    display: block;
+    height: auto;
+    min-height: calc(100dvh - var(--header-h));
+}
+
+.people-col .col {
+    border-right: none;
+    border-bottom: 1px solid #2b2b2b;
+    min-height: auto;
+}
+
+.people-col .col:last-child {
+    border-bottom: none;
+}
+
+/* People detail page - stack columns */
+.people-detail-col {
+    display: block;
+    height: auto;
+    min-height: calc(100dvh - var(--header-h));
+}
+
+.people-detail-col .col {
+    border-right: none;
+    border-bottom: 1px solid #2b2b2b;
+    min-height: auto;
+}
+
+.people-detail-col .col:last-child {
+    border-bottom: none;
+}
+
+/* ========== Card Grid - Single Column ========== */
+.col.left .cards,
+.col.center .cards,
+.col.right .cards {
+    grid-template-columns: 1fr;
+}
+
+/* ========== Typography Adjustments ========== */
+h1 {
+    font-size: 1.8rem;
+    margin: 0 0 15px 0;
+}
+
+.people-detail-col h2 {
+    font-size: 1rem;
+    margin: 5px 0 20px 0;
+}
+
+.col {
+    padding: 15px;
+}
+
+.col p {
+    line-height: 150%;
+}
+
+/* ========== Map ========== */
+.map-wrapper {
+    margin-top: 15px;
+}

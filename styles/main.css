@@ -1,0 +1,336 @@
+/* ========== Base ========== */
+html { font-size: 14px; }
+
+body {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  cursor: none; /* hide default cursor */
+}
+
+/* custom cursor */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: grey;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+/* heading styles */
+h1 {
+  font-family: "Funnel Display", sans-serif;
+  font-weight: 300;
+  font-size: 2.6rem;
+  margin: 0 0 40px 0;
+}
+
+/* links (keep cursor hidden) */
+a {
+  text-decoration: none;
+  color: #2b2b2b;
+  cursor: none;
+}
+a:hover { text-decoration: none; }
+
+/* full-screen invisible link target (sits above the title) */
+.invisible-link {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  text-decoration: none;
+}
+
+/* background video */
+#background-video {
+  position: fixed;
+  top: 0; left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* ========== Title (index) ========== */
+/* Fill viewport and center content using grid */
+.title {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: #f0f0f0;
+  z-index: 1; /* below .invisible-link */
+}
+
+/* wrapper needed for crossfade snapshot */
+.title .stack { position: relative; }
+
+/* crossfade snapshot layer */
+.title .ghost {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 520ms ease;
+}
+
+.title .ghost.show { opacity: 1; }
+
+/* label cursor shown on the index only */
+.cursor-label {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 10001;
+  font-family: "Funnel Display", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0;      /* adjust if you want tighter/looser */
+  opacity: 0;
+  transition: opacity 160ms ease;
+  white-space: nowrap;     /* ← never wrap */
+  display: inline-block;   /* safer sizing */
+}
+
+.cursor-label.show { opacity: 1; }
+
+.title h1 {
+  display: block;
+  font-weight: 400;
+  font-size: 6rem;
+  color: #f0f0f0;
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+
+/* date line with adjustable tracking/word spacing (JS sets vars) */
+.title h2 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  white-space: nowrap;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: var(--h2-track, 0em);
+  word-spacing: var(--h2-word, 0em);
+}
+
+/* ========== Inner pages (shared) ========== */
+.pages {
+  background: #f0f0f0;
+  color: #2b2b2b;
+  min-height: 100dvh;
+  overflow: hidden;
+}
+
+/* sticky header */
+:root { --header-h: 64px; } /* fallback; JS can set precisely */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  background: #f0f0f0;
+  border-bottom: 1px solid #2b2b2b;
+}
+
+.logo {
+  font-family: "Funnel Display", sans-serif;
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 1;
+  color: #2b2b2b;
+  text-decoration: none;
+  display: inline-block;
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+header nav a {
+  font-family: "Funnel Display", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  text-decoration: none;
+  color: #2b2b2b;
+}
+
+.language-switch{
+  font-family: "Funnel Display", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+}
+
+.language-switch a:hover{
+  text-decoration: underline;
+	text-underline-offset: 3px;
+	text-decoration-thickness: 2px;
+}
+
+.selected-language{
+  text-decoration: underline;
+	text-underline-offset: 3px;
+	text-decoration-thickness: 2px;
+}
+
+/* column layouts */
+.about-col {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 0.8fr;
+  height: calc(100dvh - var(--header-h));
+}
+
+.people-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: calc(100dvh - var(--header-h));
+}
+
+.people-detail-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: calc(100dvh - var(--header-h));
+}
+
+.people-detail-col h1 {
+  margin-bottom: 5px;
+}
+
+.people-detail-col h2 {
+  font-family: "Funnel Display", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin: 8px 0px 30px 0px;
+}
+
+.people-contact{
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 30px;
+}
+
+.people-contact img{
+  height: 24px;
+  width:auto;
+  margin-right:10px;
+}
+
+.col {
+  overflow: auto; /* independent scrolling */
+  padding: 20px 20px;
+}
+
+.col.left,
+.col.center { border-right: 1px solid #2b2b2b; }
+
+.col.left img {
+  width: 100%;
+  height: auto;
+}
+
+/* anchor jumps don't hide under padding */
+.col :target { scroll-margin-top: 12px; }
+
+.col p {
+  font-weight: 400;
+  line-height: 150%;
+  margin: 0;
+}
+.col p strong { font-weight: 600; }
+
+/* map block */
+.map-wrapper {
+  margin-top: 10px;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+.map-wrapper iframe {
+  position: absolute;
+  top: 0; left: 0;
+  border: 0;
+  width: 100%;
+  height: 100%;
+  filter: grayscale(100%) brightness(1.05) contrast(95%);
+}
+
+/* ========== Card grid ========== */
+.cards {
+  display: grid;
+  gap: 18px;
+  align-items: stretch; /* equal heights per row */
+}
+.col.left .cards,
+.col.center .cards,
+.col.right .cards {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* card */
+.card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #2b2b2b;
+  color: inherit;
+  overflow: hidden;
+}
+
+/* square image block */
+.card-thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1; /* perfect square */
+  overflow: hidden;
+  flex: 0 0 auto;
+}
+.card-thumb img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* text block */
+.card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 12px 14px 14px;
+}
+
+.card-title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 1.1rem;
+  margin: 0 0 6px 0;
+}
+
+.card-subtitle {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 0.9rem;
+  margin: 0;
+  color: #555;
+}
