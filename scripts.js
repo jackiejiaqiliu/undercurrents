@@ -15,6 +15,14 @@ function isTouchDevice() {
   return ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 }
 
+// Debug: Log which layout is detected
+console.log('Device detection:', {
+  isDesktop: isDesktop(),
+  isMobile: isMobile(),
+  width: window.innerWidth,
+  isTouchDevice: isTouchDevice()
+});
+
 /*****************
  * FORCE VIDEO PLAYBACK ON MOBILE
  *****************/

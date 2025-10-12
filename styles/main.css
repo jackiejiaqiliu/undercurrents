@@ -59,21 +59,27 @@ a:hover { text-decoration: none; }
 }
 
 /* ========== Title (index) ========== */
-/* Fill viewport and center content using grid */
+/* Ensure title is centered */
 .title {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  display: grid !important;
+  place-items: center !important;
   text-align: center;
   color: #f0f0f0;
-  z-index: 1; /* below .invisible-link */
+  z-index: 1;
 }
 
-/* wrapper needed for crossfade snapshot */
-.title .stack { position: relative; }
+/* Stack wrapper for proper layering */
+.title .stack {
+  position: relative;
+  z-index: 2;
+}
 
-/* crossfade snapshot layer */
+/* Ghost layer for crossfade */
 .title .ghost {
   position: absolute;
   inset: 0;
@@ -82,9 +88,18 @@ a:hover { text-decoration: none; }
   pointer-events: none;
   opacity: 0;
   transition: opacity 520ms ease;
+  z-index: 1;
 }
 
-.title .ghost.show { opacity: 1; }
+.title .ghost.show {
+  opacity: 1;
+}
+
+/* Add smooth transition to title content */
+.title .stack h1,
+.title .stack h2 {
+  transition: opacity 300ms ease;
+}
 
 /* label cursor shown on the index only */
 .cursor-label {
