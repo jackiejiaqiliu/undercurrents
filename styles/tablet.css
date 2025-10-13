@@ -51,9 +51,23 @@ body:not(.pages) .invisible-link {
     display: none;
 }
 
-/* Tablet 字号（可按需） */
-.title h1 { font-size: 5rem; }
-.title h2 { font-size: 1.2rem; }
+
+/* Prevent line breaks in the title text */
+.title h1,
+.title h2 {
+  white-space: nowrap;
+  overflow: visible; /* allow small overflow if needed */
+  text-align: center;
+}
+
+.title h1 {
+    font-size: 5rem;
+    margin-bottom: 10px;
+}
+
+.title h2 {
+    font-size: 1.2rem;
+}
 
 /* Add language buttons container - plain text style */
 .language-buttons {

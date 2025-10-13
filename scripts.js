@@ -124,6 +124,47 @@ if (onIndex) {
 })();
 
 /*****************
+ * ROBUST CENTERING FOR .title (works even if CSS fails)
+ *****************/
+(function robustCentering() {
+  const title = document.querySelector('.title');
+  if (!title) return;
+  const stack = title.querySelector('.stack');
+  if (!stack) return;
+
+  // Always ensure the container fills viewport
+  Object.assign(title.style, {
+    position: 'fixed',
+    top: '0',
+    right: '0',
+    bottom: '0',
+    left: '0',
+    zIndex: '1'
+  });
+
+  // Absolutely center the live stack (bullet-proof)
+  function centerStack() {
+    Object.assign(stack.style, {
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      margin: '0'
+    });
+  }
+  centerStack();
+
+  // Re-assert centering after resize / orientation changes
+  let t;
+  window.addEventListener('resize', () => {
+    clearTimeout(t);
+    t = setTimeout(centerStack, 50);
+  });
+})();
+
+
+
+/*****************
  * FLOATING TEXT UTILITIES
  *****************/
 function applyFloatToElement(el, options = {}) {
@@ -326,8 +367,20 @@ function crossfadeSwap(setter) {
 
   // Clone current visible stack
   const snap = stack.cloneNode(true);
-  snap.style.margin = "0";
-  snap.style.display = "block";
+
+  // Neutralize any absolute-centering from the live stack:
+  snap.style.position = 'static';
+  snap.style.top = '';
+  snap.style.left = '';
+  snap.style.transform = '';
+  snap.style.margin = '0';
+
+  // (optional) ensure the inner h1/h2 don’t carry weird inline transforms
+  const inner = snap.querySelectorAll('h1, h2');
+  inner.forEach(n => {
+    n.style.transform = '';
+  });
+
   overlay.appendChild(snap);
 
   // Ensure .title is a positioning context (defensive)

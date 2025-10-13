@@ -10,13 +10,14 @@ html {
     overflow: auto !important;
 }
 
+
 /* ========== Header & Navigation ========== */
 header {
     padding: 12px 15px;
 }
 
 .logo {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
 }
 
 /* Hide regular nav on mobile */
@@ -129,7 +130,7 @@ header nav {
     display: flex !important;
     flex-direction: column;
     align-items: flex-start;
-    gap: 15px;
+    gap: 20px;
     width: 100%;
     padding: 70px 20px 30px 20px;
     position: relative;
@@ -138,7 +139,7 @@ header nav {
 
 .mobile-nav-overlay nav a {
     font-family: "Funnel Display", sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 300;
     color: #2b2b2b;
     text-decoration: none;
@@ -149,9 +150,9 @@ header nav {
 /* Language switch - keep on one line */
 .mobile-nav-overlay nav .language-switch {
     font-family: "Funnel Display", sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 300;
-    margin-top: 0;
+    margin-top: 20px;
     text-align: left;
     display: block !important; /* Override flex from nav */
     white-space: nowrap; /* Keep all on one line */
@@ -159,7 +160,7 @@ header nav {
 
 .mobile-nav-overlay nav .language-switch a {
     display: inline !important; /* Inline for horizontal layout */
-    font-size: 1.5rem;
+    font-size: 1.4rem;
 }
 
 .mobile-nav-overlay nav .language-switch a:hover {
@@ -175,6 +176,14 @@ header nav {
 }
 
 /* ========== Index Page - Mobile ========== */
+
+/* Prevent line breaks in the title text */
+.title h1,
+.title h2 {
+  white-space: nowrap;
+  overflow: visible; /* allow small overflow if needed */
+  text-align: center;
+}
 
 .title h1 { font-size: 3.4rem; }
 .title h2 { font-size: 1.1rem; }
@@ -251,22 +260,22 @@ header nav {
 .col.left .cards,
 .col.center .cards,
 .col.right .cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
 }
 
 .card-body{
-    padding:15px;
+    padding:10px;
 }
 
 .card-title{
-    font-size: 1.3rem;
-    margin-bottom: 6px;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
 }
 
 /* ========== Typography Adjustments ========== */
 h1 {
     font-size: 1.8rem;
-    margin: 0 0 15px 0;
+    margin: 0 0 20px 0;
 }
 
 .people-detail-col h2 {
