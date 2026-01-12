@@ -1,0 +1,122 @@
+/* Base font size adjustment */
+html { 
+    font-size: 12px; 
+}
+
+/* Heading adjustments */
+h1 {
+    font-size: 2rem;
+    margin: 0px 0px 20px 0px;
+}
+
+/* Paragraph line height */
+.col p {
+    line-height: 140%;
+}
+
+/* Card adjustments */
+.card-body {
+    padding: 10px;
+}
+
+.card-title {
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+/* People detail page heading */
+.people-detail-col h2 {
+    font-size: 1.15rem;
+    margin: 8px 0 25px 0;
+}
+
+/* ========== Tablet - Default Cursor EVERYWHERE ========== */
+* {
+    cursor: default !important;
+}
+
+/* Remove custom cursor elements */
+.custom-cursor {
+    display: none !important;
+}
+
+.cursor-label {
+    display: none !important;
+}
+
+/* ========== Index Page - Tablet Specific ========== */
+
+/* Hide the invisible link overlay on index */
+body:not(.pages) .invisible-link {
+    display: none;
+}
+
+
+/* Prevent line breaks in the title text */
+.title h1,
+.title h2 {
+  white-space: nowrap;
+  overflow: visible; /* allow small overflow if needed */
+  text-align: center;
+}
+
+.title h1 {
+    font-size: 5rem;
+    margin-bottom: 10px;
+}
+
+.title h2 {
+    font-size: 1.2rem;
+}
+
+/* Add language buttons container - plain text style */
+.language-buttons {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.language-buttons a {
+    font-family: "Funnel Display", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #f0f0f0;
+    text-decoration: none;
+}
+
+.language-buttons .separator {
+    color: #f0f0f0;
+    font-family: "Funnel Display", sans-serif;
+    font-size: 1.3rem;
+    font-weight: 300;
+}
+
+
+/* ========== Artworks Grid - Tablet ========== */
+.col.full .cards {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.col.full .card-subtitle {
+    font-size: 0.95rem;
+}
+
+/* ========== Artwork Detail - Tablet ========== */
+.artwork-detail-col .col.left img {
+    margin-bottom: 15px;
+}
+
+.artwork-detail-col h2 {
+    font-size: 1.1rem;
+    margin: 8px 0 25px 0;
+}
+
+.artwork-detail-col h2.medium {
+    font-size: 1.3rem;
+    margin: 8px 0 8px 0;
+}
